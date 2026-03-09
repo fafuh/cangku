@@ -13,9 +13,9 @@
                     <el-form-item label="备注" prop="Remark">
                         <el-input v-model.trim="searchForm.Remark" placeholder="请输入备注" :clearable="true"></el-input>
                     </el-form-item>
-                    <el-form-item label="货主">
-                        <SigleSelect url="/Customer/List" columnName="OwnerName" :clearable="true" columnValue="Id"
-                            v-model="searchForm.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
+                    <el-form-item label="联系人">
+                        <SigleSelect url="/Customer/List" columnName="ContactPerson" :clearable="true" columnValue="Id"
+                            columnLabel="OwnerName" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
                         </SigleSelect>
                     </el-form-item>
 
@@ -59,9 +59,9 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="货主" prop="CustomerId">
-                            <SigleSelect url="/Customer/List" columnName="OwnerName" columnValue="Id"
-                                v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
+                        <el-form-item label="联系人" prop="CustomerId">
+                            <SigleSelect url="/Customer/List" columnName="ContactPerson" columnValue="Id"
+                                columnLabel="OwnerName" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
                             </SigleSelect>
                         </el-form-item>
                     </el-col>
@@ -157,6 +157,12 @@ export default {
                     key: "CustomerId",
                     hidden: true,
                 },
+              {
+                key: "CustomerDto.ContactPerson",
+                title: "联系人",
+                width: "160px",
+                type: store.getters.ColumnType.SHORTTEXT,
+              },
                 {
                     key: "WarehouseId",
                     hidden: true,
@@ -218,7 +224,7 @@ export default {
                 "No": [
                     { required: true, message: '该项为必填项', trigger: 'blur' },
                 ],
-                "CustomerId": [
+                "ContactPerson": [
                     { required: true, message: '该项为必填项', trigger: 'blur' },
                 ],
                 "WarehouseId": [
