@@ -313,8 +313,9 @@ export default {
             this.warehouseList = list;
             if (!this.CurrentWarehouseId) {
 
-                this.CurrentWarehouseId = this.warehouseList[0].Id;
-                this.$store.dispatch("SetCurrentWarehouseId", this.warehouseList[0].Id);
+                this.CurrentWarehouseId = this.warehouseList[1].Id;
+                this.$store.dispatch("SetCurrentWarehouseId", this.warehouseList[1].Id);
+                window.location.reload();
             }
         },
         async ChangeWarehouse(id) {
