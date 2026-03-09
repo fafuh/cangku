@@ -14,10 +14,10 @@
                         <el-input v-model.trim="searchForm.Remark" placeholder="请输入备注" :clearable="true"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="货主">
-                        <SigleSelect url="/Customer/List" columnName="OwnerName" :clearable="true" columnValue="Id"
-                            v-model="searchForm.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
-                        </SigleSelect>
+                  <el-form-item label="联系人" prop="CustomerId">
+                    <SigleSelect url="/Customer/List" columnName="ContactPerson" columnValue="Id"
+                                 columnLabel="OwnerName" :reverseOrder="true" v-model="searchForm.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
+                    </SigleSelect>
                     </el-form-item>
                     <el-form-item label="入库类型">
                         <SigleSelect url="/Select/StockInTypeEnum" columnName="Name" :clearable="true"
@@ -59,11 +59,11 @@
                     </el-col>
 
                     <el-col :span="24">
-                        <el-form-item label="货主" prop="CustomerId">
-                            <SigleSelect url="/Customer/List" columnName="OwnerName" columnValue="Id"
-                                :disabled="formData.Id" v-model="formData.CustomerId"
-                                :where="{ WarehouseId: CurrentWarehouseId }">
-                            </SigleSelect>
+                      <el-form-item label="联系人" prop="CustomerId">
+                        <SigleSelect url="/Customer/List" columnName="ContactPerson" columnValue="Id"
+                                     columnLabel="OwnerName" :reverseOrder="true" :disabled="formData.Id" v-model="formData.CustomerId"
+                                     :where="{ WarehouseId: CurrentWarehouseId }">
+                        </SigleSelect>
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
@@ -172,9 +172,16 @@ export default {
                     key: "CustomerId",
                     hidden: true,
                 },
+              {
+                key: "CustomerDto.OwnerName",
+                title: "货主名称",
+                width: "160px",
+
+                type: store.getters.ColumnType.SHORTTEXT,
+              },
                 {
-                    key: "CustomerDto.OwnerName",
-                    title: "货主名称",
+                    key: "CustomerDto.ContactPerson",
+                    title: "联系人",
                     width: "160px",
 
                     type: store.getters.ColumnType.SHORTTEXT,

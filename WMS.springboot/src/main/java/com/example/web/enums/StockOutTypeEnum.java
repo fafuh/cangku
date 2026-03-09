@@ -15,7 +15,7 @@ public enum StockOutTypeEnum
     /**
      * 普通出库
      */    
-    线下销售出库(2),
+    门店销售出库(2),
      
     /**
      * 报损出库

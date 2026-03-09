@@ -43,7 +43,10 @@ export default {
             type: Boolean,
             default: false
         },
-
+      reverseOrder: {
+        type: Boolean,
+        default: true
+      }
 
     },
     watch: {
@@ -104,14 +107,15 @@ export default {
             });
             this.loading = false;
             let dataList = [];
-            Items.forEach((item, index) => {
-                if (this.filterValue.find(x => x == item[`${this.columnValue}`]?.toString()) == null) {
-                    dataList.push({
-                        name: item[`${this.columnName}`],
-                        value: item[`${this.columnValue}`]?.toString(),
-                        label: item[`${this.columnLabel}`]?.toString(),
-                        orginRItem: item
-                    });
+          let itemsToProcess = this.reverseOrder ? Items.reverse() : Items;
+          itemsToProcess.forEach((item, index) => {
+            if (this.filterValue.find(x => x == item[`${this.columnValue}`]?.toString()) == null) {
+              dataList.push({
+                name: item[`${this.columnName}`],
+                value: item[`${this.columnValue}`]?.toString(),
+                label: item[`${this.columnLabel}`]?.toString(),
+                orginRItem: item
+              });
 
                 }
 

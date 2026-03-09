@@ -13,10 +13,10 @@
                     <el-form-item label="备注" prop="Remark">
                         <el-input v-model.trim="searchForm.Remark" placeholder="请输入备注" :clearable="true"></el-input>
                     </el-form-item>
-                    <el-form-item label="联系人">
-                        <SigleSelect url="/Customer/List" columnName="ContactPerson" :clearable="true" columnValue="Id"
-                            columnLabel="OwnerName" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
-                        </SigleSelect>
+                  <el-form-item label="联系人">
+                    <SigleSelect url="/Customer/List" columnName="ContactPerson" :clearable="true" columnValue="Id"
+                                 columnLabel="OwnerName" :reverseOrder="false" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
+                    </SigleSelect>
                     </el-form-item>
 
                     <el-form-item label="出库类型">
@@ -59,10 +59,10 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="24">
-                        <el-form-item label="联系人" prop="CustomerId">
-                            <SigleSelect url="/Customer/List" columnName="ContactPerson" columnValue="Id"
-                                columnLabel="OwnerName" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
-                            </SigleSelect>
+                      <el-form-item label="联系人" prop="CustomerId">
+                        <SigleSelect url="/Customer/List" columnName="ContactPerson" columnValue="Id"
+                                     columnLabel="OwnerName" :reverseOrder="false" v-model="formData.CustomerId" :where="{ WarehouseId: CurrentWarehouseId }">
+                        </SigleSelect>
                         </el-form-item>
                     </el-col>
 
@@ -153,6 +153,12 @@ export default {
 
                     type: store.getters.ColumnType.SHORTTEXT,
                 },
+              {
+                key: "CustomerDto.OwnerName",
+                title: "货主名称",
+                width: "160px",
+                type: store.getters.ColumnType.SHORTTEXT,
+              },
                 {
                     key: "CustomerId",
                     hidden: true,
@@ -174,18 +180,36 @@ export default {
 
                     type: store.getters.ColumnType.SHORTTEXT,
                 },
+              {
+                key: "StockOutTypeFormat",
+                title: "出库类型",
+                width: "160px",
+
+                type: store.getters.ColumnType.SHORTTEXT,
+              },
+              {
+                key: "StockOutStatus",
+                hidden: true,
+              }, {
+                key: "StockOutStatusFormat",
+                title: "出库状态",
+                width: "160px",
+
+                type: store.getters.ColumnType.SHORTTEXT,
+              },
+              {
+                key: "PlanOutTime",
+                title: "计划出库时间",
+                width: "240px",
+                type: store.getters.ColumnType.DATETIME,
+              },
                 {
                     key: "OutTime",
                     title: "出库时间",
                     width: "240px",
                     type: store.getters.ColumnType.DATETIME,
                 },
-                {
-                    key: "PlanOutTime",
-                    title: "计划出库时间",
-                    width: "240px",
-                    type: store.getters.ColumnType.DATETIME,
-                },
+
                 {
                     key: "Remark",
                     title: "备注",
@@ -196,22 +220,6 @@ export default {
                 {
                     key: "StockOutType",
                     hidden: true,
-                }, {
-                    key: "StockOutTypeFormat",
-                    title: "出库类型",
-                    width: "160px",
-
-                    type: store.getters.ColumnType.SHORTTEXT,
-                },
-                {
-                    key: "StockOutStatus",
-                    hidden: true,
-                }, {
-                    key: "StockOutStatusFormat",
-                    title: "出库状态",
-                    width: "160px",
-
-                    type: store.getters.ColumnType.SHORTTEXT,
                 },
                 {
                     title: "操作",
