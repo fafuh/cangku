@@ -14,7 +14,7 @@
             <!-- 右侧登录表单区域 -->
             <div class="login-right">
                 <div class="login-form-container">
-                    <h2>登录仓库管理系统</h2>
+                    <h2>登录线上超市仓库管理系统</h2>
                     <p class="subtitle">请输入您的账号信息</p>
 
                     <el-form ref="loginForm" :model="formData" :rules="rules">

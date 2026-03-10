@@ -6,7 +6,7 @@
                 <div class="bg-header">
                     <div class="flex align-center">
                         <img :src="require('@/assets/logo.png')" style="width: 50px; height: 50px;">
-                        <span style="margin-left:10px">智慧仓库管理系统</span>
+                        <span style="margin-left:10px">线上超市仓库管理系统</span>
                     </div>
                     <div style="display: flex;align-items: center">
                         <div>当前仓库:</div>
